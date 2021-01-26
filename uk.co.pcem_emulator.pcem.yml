@@ -1,0 +1,40 @@
+app-id: uk.co.pcem_emulator.pcem
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: pcem
+finish-args:
+  - --share=network
+  - --socket=x11
+  - --socket=pulseaudio
+  - --persist=.pcem
+  # CD access
+  - --device=all
+
+modules:
+  # wxWidgets does support GTK3 but PCem itself doesn't (not properly that is)
+  - shared-modules/gtk2/gtk2.json
+
+  - shared-modules/glu/glu-9.json
+
+  - name: wxWidgets
+    config-opts:
+      - --with-gtk=2
+      - --with-opengl
+    sources:
+      - type: archive
+        url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.4/wxWidgets-3.1.4.tar.bz2
+        sha512: aabb257fa222eb819f1e16086977b0ecfd3eb3406d695e0e642ffdb8b4dc586a9721404916be4756a2d92a1a8dc41b661b54717a64e03850a8a92d32d45ece14
+
+  - name: pcem
+    buildsystem: simple
+    build-commands:
+      - autoreconf -f -i
+      - ./configure --enable-release-build --enable-networking
+      - make -j$FLATPAK_BUILDER_N_JOBS
+      - install -Dm755 pcem /app/bin/pcem
+    sources:
+      - type: git
+        url: https://github.com/sarah-walker-pcem/pcem.git
+        branch: master
+        commit: 13f53a25687be71ee3ee8482b1a90b1b0aa64fb6

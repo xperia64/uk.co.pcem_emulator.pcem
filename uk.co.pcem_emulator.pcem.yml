@@ -15,12 +15,14 @@ modules:
   # wxWidgets does support GTK3 but PCem itself doesn't (not properly that is)
   - shared-modules/gtk2/gtk2.json
 
-  - shared-modules/glu/glu-9.json
-
   - name: wxWidgets
+    cleanup:
+      - /include
+      - /bin
+      - /share/aclocal
+      - /share/bakefile
     config-opts:
       - --with-gtk=2
-      - --with-opengl
     sources:
       - type: archive
         url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.4/wxWidgets-3.1.4.tar.bz2

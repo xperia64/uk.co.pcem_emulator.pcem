@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>uk.co.pcem_emulator.pcem</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-2.0</project_license>
+    <name>PCem</name>
+    <summary>PC emulator</summary>
+
+    <description>
+        <p>
+            Emulator for various IBM PC computers and clones.
+        </p>
+    </description>
+
+    <launchable type="desktop-id">uk.co.pcem_emulator.pcem.desktop</launchable>
+
+    <screenshots>
+        <screenshot type="default">
+            <image>https://pcem-emulator.co.uk/images/win98.png</image>
+        </screenshot>
+    </screenshots>
+
+    <url type="homepage">https://pcem-emulator.co.uk/</url>
+
+    <releases>
+        <release version="17" date="2020-12-01"/>
+    </releases>
+
+    <content_rating type="oars-1.1" />
+</component>

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Name=PCem
+Type=Application
+Comment=Emulator for various IBM PC computers and clones
+Exec=pcem
+Icon=uk.co.pcem_emulator.pcem

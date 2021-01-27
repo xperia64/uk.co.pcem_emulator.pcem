@@ -28,8 +28,7 @@ modules:
         url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.4/wxWidgets-3.1.4.tar.bz2
         sha512: aabb257fa222eb819f1e16086977b0ecfd3eb3406d695e0e642ffdb8b4dc586a9721404916be4756a2d92a1a8dc41b661b54717a64e03850a8a92d32d45ece14
 
-  # There is the Linux tarball but it doesn't get extracted correctly by flatpak-builder somehow
-  # Also autoreconf is needed since something is apparently hardcoded to need autotools 1.15
+  # Autoreconf is needed since something is apparently hardcoded to need autotools 1.15
   - name: pcem
     buildsystem: simple
     build-commands:
@@ -41,10 +40,10 @@ modules:
       - install -Dm644 uk.co.pcem_emulator.pcem.desktop /app/share/applications/uk.co.pcem_emulator.pcem.desktop
       - install -Dm644 uk.co.pcem_emulator.pcem.svg /app/share/icons/hicolor/scalable/apps/uk.co.pcem_emulator.pcem.svg
     sources:
-      - type: git
-        url: https://github.com/sarah-walker-pcem/pcem.git
-        branch: master
-        commit: 13f53a25687be71ee3ee8482b1a90b1b0aa64fb6
+      - type: archive
+        url: https://pcem-emulator.co.uk/files/PCemV17Linux.tar.gz
+        sha512: 6d84c8cbe9b6116f6439f542ac08139cfc5652a34b615a1ed841a6f8c227e77f1d26573ec35d57511b9a69e7472fbe51f2abb9307f8f8c1207c74fbe8107cadd
+        strip-components: 0
       - type: file
         path: uk.co.pcem_emulator.pcem.metainfo.xml
       - type: file

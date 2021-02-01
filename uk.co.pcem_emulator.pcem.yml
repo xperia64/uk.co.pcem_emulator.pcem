@@ -12,9 +12,6 @@ finish-args:
   - --device=all
 
 modules:
-  # wxWidgets does support GTK3 but PCem itself doesn't (not properly that is)
-  - shared-modules/gtk2/gtk2.json
-
   - name: wxWidgets
     cleanup:
       - /include
@@ -22,7 +19,7 @@ modules:
       - /share/aclocal
       - /share/bakefile
     config-opts:
-      - --with-gtk=2
+      - --with-gtk=3
     sources:
       - type: archive
         url: https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.4/wxWidgets-3.1.4.tar.bz2
